@@ -1,429 +1,226 @@
-
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TheHomeoVibe — Homeopathy Pharmacy | Dr. Vijay Reswal (BHMS)</title>
+<title>Abhishek Yadav | Web Developer & Cybersecurity Enthusiast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+  :root{
+    --bg:#0a0a0c;
+    --bg-alt:#111114;
+    --panel:#16161a;
+    --line:#28282d;
+    --gold:#c9a15a;
+    --gold-bright:#e8c887;
+    --cyan:#5fd4c8;
+    --violet:#b98bf0;
+    --coral:#f0876b;
+    --steel:#8a94a6;
+    --text:#efece4;
+    --muted:#93938f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 0%, rgba(201,161,90,0.08), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces','Georgia',serif;letter-spacing:-0.01em;font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
 
-:root{
-  --ink-green:#1F3D2B;
-  --ink-green-light:#2C5540;
-  --amber:#C97C3D;
-  --amber-dark:#A85F27;
-  --parchment:#F6F1E4;
-  --cream:#FBF8F1;
-  --leaf:#7A9B6A;
-  --charcoal:#2A2622;
-  --line:rgba(42,38,34,0.12);
-  --red:#B5432E;
-  --whatsapp:#25D366;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--parchment);color:var(--charcoal);font-family:'Work Sans',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
-h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--ink-green);letter-spacing:-0.01em;}
-a{text-decoration:none;color:inherit;}
-img{max-width:100%;display:block;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
-.mono{font-family:'IBM Plex Mono',monospace;}
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 6%;
+    background:linear-gradient(to bottom, rgba(10,10,12,0.92), transparent);
+  }
+  nav .mark{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;letter-spacing:0.02em;}
+  nav .mark span{color:var(--gold);}
+  nav ul{display:flex;gap:38px;list-style:none;}
+  nav ul li a{font-size:0.9rem;color:var(--muted);transition:color .25s;}
+  nav ul li a:hover{color:var(--gold-bright);}
+  @media(max-width:720px){nav ul{gap:16px;} nav ul li a{font-size:0.76rem;}}
 
-header{position:sticky;top:0;z-index:50;background:rgba(251,248,241,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1180px;margin:0 auto;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-mark{width:36px;height:36px;border-radius:50% 50% 50% 4px;background:var(--amber);position:relative;flex-shrink:0;}
-.logo-mark::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--cream);}
-.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;color:var(--ink-green);line-height:1;}
-.logo-text span{color:var(--amber-dark);}
-.logo-sub{font-size:0.65rem;color:#736c61;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-top:2px;}
-nav{display:flex;gap:28px;font-weight:500;font-size:0.9rem;}
-nav a:hover{color:var(--amber-dark);}
-.wa-header-btn{display:flex;align-items:center;gap:7px;background:var(--whatsapp);color:#fff;padding:9px 16px;border-radius:24px;font-size:0.85rem;font-weight:600;}
-@media(max-width:900px){nav{display:none;}}
+  /* floating action buttons */
+  .fab-stack{
+    position:fixed;right:22px;bottom:28px;z-index:70;
+    display:flex;flex-direction:column;gap:14px;align-items:center;
+  }
+  .fab{
+    width:52px;height:52px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(22,22,26,0.9);
+    border:1px solid var(--line);
+    backdrop-filter:blur(6px);
+    transition:transform .2s, border-color .2s;
+    font-size:1.2rem;
+  }
+  .fab:hover{transform:translateY(-3px);border-color:var(--gold);}
+  .fab.whatsapp{color:#3ddc97;border-color:rgba(61,220,151,0.35);}
+  .fab.top{color:var(--cyan);border-color:rgba(95,212,200,0.35);}
 
-.hero{position:relative;overflow:hidden;padding:64px 0 50px;background:radial-gradient(ellipse at 78% 20%, rgba(122,155,106,0.18), transparent 55%),radial-gradient(ellipse at 15% 80%, rgba(201,124,61,0.14), transparent 50%);}
-.hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:46px;align-items:center;}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--amber-dark);display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;}
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--amber-dark);}
-.hero h1{font-size:clamp(2rem,3.8vw,3rem);line-height:1.12;margin-bottom:16px;}
-.hero h1 em{font-style:italic;color:var(--amber-dark);}
-.hero p{font-size:1.02rem;color:#4a453f;max-width:480px;margin-bottom:24px;}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{background:var(--amber);color:var(--cream);padding:13px 24px;border-radius:30px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;box-shadow:0 8px 20px rgba(168,95,39,0.28);}
-.btn-primary:hover{background:var(--amber-dark);}
-.btn-whatsapp{display:inline-flex;align-items:center;gap:8px;background:var(--whatsapp);color:#fff;padding:13px 24px;border-radius:30px;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,0.3);}
-.btn-whatsapp:hover{background:#1ebe57;}
-.doc-card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:14px;max-width:440px;}
-.doc-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(160deg,var(--leaf),var(--ink-green));flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--cream);font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;}
-.doc-name{font-weight:700;color:var(--ink-green);font-size:0.98rem;}
-.doc-meta{font-size:0.78rem;color:#736c61;margin-top:2px;}
-.doc-actions{display:flex;gap:8px;margin-top:10px;}
-.mini-link{font-size:0.74rem;color:var(--ink-green);font-weight:600;display:flex;align-items:center;gap:4px;}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}}
+  /* HERO */
+  #hero{
+    position:relative;min-height:100svh;display:flex;align-items:center;
+    overflow:hidden;border-bottom:1px solid var(--line);padding-top:90px;
+  }
+  #hero-canvas{position:absolute;inset:0;z-index:0;opacity:0.75;}
+  .hero-wrap{
+    position:relative;z-index:2;padding:0 6%;width:100%;
+    display:grid;grid-template-columns:1.3fr 0.7fr;gap:60px;align-items:center;
+  }
+  .eyebrow{color:var(--steel);font-size:0.95rem;margin-bottom:20px;letter-spacing:0.02em;}
+  .hero-content h1{font-size:clamp(2.2rem,4.8vw,3.9rem);line-height:1.1;margin-bottom:22px;}
+  .hero-content h1 em{font-style:italic;color:var(--gold-bright);}
+  .hero-content p{font-size:1.08rem;color:var(--muted);max-width:540px;line-height:1.65;margin-bottom:28px;}
+  .hero-content p b{color:var(--text);}
+  .hero-content p .accent{color:var(--cyan);}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;}
+  .pill{border:1px solid var(--line);color:var(--muted);font-size:0.82rem;padding:7px 16px;border-radius:20px;}
+  .pill.c-gold{border-color:rgba(201,161,90,0.5);color:var(--gold-bright);}
+  .pill.c-cyan{border-color:rgba(95,212,200,0.5);color:var(--cyan);}
+  .pill.c-violet{border-color:rgba(185,139,240,0.5);color:var(--violet);}
+  .pill.c-coral{border-color:rgba(240,135,107,0.5);color:var(--coral);}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:15px 30px;border-radius:2px;font-size:0.95rem;font-weight:500;transition:all .25s;border:1px solid transparent;}
+  .btn-primary{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#161310;}
+  .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px);}
+  .btn-secondary{border-color:var(--line);color:var(--text);}
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold-bright);}
 
-.trust-strip{background:var(--ink-green);color:var(--cream);padding:18px 0;}
-.trust-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:0.82rem;font-weight:500;}
-.trust-inner div{display:flex;align-items:center;gap:8px;}
-.trust-inner div::before{content:"◆";color:var(--amber);font-size:0.65rem;}
+  .portrait-frame{position:relative;justify-self:center;width:min(300px,80%);aspect-ratio:1/1;}
+  .portrait-ring{position:absolute;inset:-14px;border:1px solid var(--gold);border-radius:50%;opacity:0.55;}
+  .portrait-ring.outer{inset:-28px;opacity:0.25;}
+  .portrait-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,161,90,0.15);
+    animation:spin-slow 14s linear infinite;}
+  @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .portrait-ring{animation:spin-slow 22s linear infinite reverse;}
+  .portrait-ring.outer{animation:spin-slow 30s linear infinite;}
+  .cap-badge{
+    position:absolute;top:-16px;left:50%;transform:translateX(-50%) rotate(-4deg);
+    background:linear-gradient(135deg,#1c1c20,#0d0d0f);
+    border:1px solid var(--gold);color:var(--gold-bright);
+    font-family:'Fraunces',serif;font-weight:600;font-size:0.95rem;
+    padding:8px 20px;border-radius:6px 6px 4px 4px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    letter-spacing:0.03em;z-index:3;
+  }
+  .cap-badge::after{
+    content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
+    width:36px;height:6px;background:inherit;border-radius:0 0 8px 8px;border:1px solid var(--gold);border-top:none;
+  }
+  @media(max-width:820px){
+    .hero-wrap{grid-template-columns:1fr;text-align:left;}
+    .portrait-frame{order:-1;width:180px;margin-bottom:30px;}
+  }
 
-section.block{padding:64px 0;}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:16px;}
-.section-head h2{font-size:clamp(1.5rem,2.2vw,2rem);}
-.section-head p{color:#6b6459;max-width:440px;font-size:0.9rem;}
+  section{padding:120px 6%;max-width:1180px;margin:0 auto;}
+  .section-head{margin-bottom:56px;max-width:600px;}
+  .section-head .tag{color:var(--gold);font-size:0.9rem;margin-bottom:14px;letter-spacing:0.02em;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.2;}
+  .section-head p{color:var(--muted);margin-top:18px;line-height:1.6;}
 
-.cond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.cond-card{background:var(--cream);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s;}
-.cond-card:hover{transform:translateY(-4px);}
-.cond-banner{height:80px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;background:linear-gradient(135deg, rgba(181,67,46,0.14), rgba(122,155,106,0.16));}
-.cond-body{padding:15px 17px;}
-.cond-tag{font-size:0.68rem;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
-.cond-body h3{font-size:1.02rem;margin:5px 0 6px;}
-.cond-body p{font-size:0.8rem;color:#6b6459;}
-@media(max-width:900px){.cond-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.cond-grid{grid-template-columns:1fr;}}
+  /* CERTIFICATES */
+  .cert-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:start;}
+  .cert-card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg-alt);}
+  .cert-card img{width:100%;}
+  .cert-side{display:flex;flex-direction:column;gap:18px;}
+  .cert-mini{border:1px solid var(--line);border-radius:8px;padding:24px;background:var(--bg-alt);}
+  .cert-mini .cname{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:6px;}
+  .cert-mini .cissuer{color:var(--gold);font-size:0.85rem;}
+  .cert-mini .cnote{color:var(--muted);font-size:0.85rem;margin-top:8px;}
+  @media(max-width:820px){.cert-grid{grid-template-columns:1fr;}}
 
-.overlay{position:fixed;inset:0;background:rgba(31,25,20,0.55);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;}
-.overlay.show{display:flex;}
-.detail-sheet{background:var(--cream);border-radius:20px;max-width:840px;width:100%;padding:0;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.35);margin-bottom:40px;}
-.detail-close{position:absolute;top:16px;right:16px;background:var(--ink-green);color:var(--cream);width:34px;height:34px;border-radius:50%;border:none;font-size:1.1rem;cursor:pointer;z-index:5;}
-.detail-head{background:linear-gradient(135deg, var(--ink-green), var(--ink-green-light));color:var(--cream);padding:32px 32px 24px;border-radius:20px 20px 0 0;}
-.detail-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--leaf);margin-bottom:8px;}
-.detail-head h2{color:var(--cream);font-size:1.8rem;}
-.detail-head .hindi{color:var(--amber);font-size:1rem;font-weight:500;margin-top:4px;}
-.detail-body{padding:26px 32px 32px;}
-.detail-intro{font-size:0.92rem;color:#4a453f;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--line);}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
-.info-box{background:var(--parchment);border:1px solid var(--line);border-radius:12px;padding:15px 17px;}
-.info-box h4{font-size:0.83rem;color:var(--ink-green);margin-bottom:9px;display:flex;align-items:center;gap:6px;}
-.info-box ul{list-style:none;font-size:0.8rem;color:#4a453f;}
-.info-box li{padding:3px 0;padding-left:18px;position:relative;}
-.info-box li::before{content:"✓";position:absolute;left:0;color:var(--leaf);font-weight:700;}
-.remedy-strip{margin-top:6px;}
-.remedy-strip h4{font-size:0.92rem;color:var(--ink-green);margin-bottom:11px;}
-.remedy-row{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
-.remedy-chip{background:var(--parchment);border:1px solid var(--line);border-radius:10px;padding:11px 9px;text-align:center;}
-.remedy-chip .mono{font-size:0.75rem;font-weight:700;color:var(--amber-dark);display:block;margin-bottom:4px;}
-.remedy-chip span.desc{font-size:0.68rem;color:#736c59;}
-.detail-note{font-size:0.74rem;color:#8a8378;margin-top:10px;font-style:italic;}
-.doctor-alert{background:rgba(181,67,46,0.08);border:1px solid rgba(181,67,46,0.25);border-radius:12px;padding:13px 16px;margin-top:20px;font-size:0.8rem;color:var(--red);}
-.consult-cta{display:flex;align-items:center;justify-content:space-between;background:var(--whatsapp);color:#fff;border-radius:14px;padding:15px 20px;margin-top:20px;flex-wrap:wrap;gap:12px;}
-.consult-cta span{font-size:0.87rem;font-weight:600;}
-.consult-cta button{background:#fff;color:var(--whatsapp);border:none;padding:10px 18px;border-radius:24px;font-weight:700;font-size:0.85rem;cursor:pointer;}
-@media(max-width:640px){.detail-grid{grid-template-columns:1fr;}.remedy-row{grid-template-columns:repeat(2,1fr);}}
+  /* TECH BUBBLES */
+  .bubble-field{
+    position:relative;min-height:340px;display:flex;flex-wrap:wrap;
+    gap:26px;align-items:center;justify-content:center;padding:20px 0;
+  }
+  .bubble{
+    width:74px;height:74px;border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #2a2a30, #131316 70%);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+    animation:float 5s ease-in-out infinite;
+    box-shadow:0 10px 26px rgba(0,0,0,0.5);
+  }
+  .bubble:nth-child(2n){animation-duration:6.2s;animation-delay:.4s;}
+  .bubble:nth-child(3n){animation-duration:4.4s;animation-delay:.8s;}
+  .bubble:nth-child(4n){animation-duration:7s;animation-delay:.2s;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+  .bubble.r-gold{border-color:rgba(201,161,90,0.55);box-shadow:0 10px 26px rgba(201,161,90,0.15);}
+  .bubble.r-cyan{border-color:rgba(95,212,200,0.55);box-shadow:0 10px 26px rgba(95,212,200,0.15);}
+  .bubble.r-violet{border-color:rgba(185,139,240,0.55);box-shadow:0 10px 26px rgba(185,139,240,0.15);}
+  .bubble.r-coral{border-color:rgba(240,135,107,0.55);box-shadow:0 10px 26px rgba(240,135,107,0.15);}
+  .bubble-label{font-size:0.7rem;font-weight:600;letter-spacing:0.03em;}
 
-.why{background:var(--ink-green);color:var(--cream);}
-.why .section-head h2,.why .section-head p{color:var(--cream);}
-.why .section-head p{color:rgba(251,248,241,0.72);}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.why-card{background:rgba(251,248,241,0.06);border:1px solid rgba(251,248,241,0.14);border-radius:16px;padding:24px 18px;}
-.why-num{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:0.82rem;font-weight:600;margin-bottom:12px;}
-.why-card h3{color:var(--cream);font-size:1rem;margin-bottom:8px;}
-.why-card p{font-size:0.82rem;color:rgba(251,248,241,0.7);}
-@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  /* EDUCATION */
+  .edu-item{display:grid;grid-template-columns:70px 1fr;gap:28px;padding:36px 0;border-top:1px solid var(--line);}
+  .edu-item:last-child{border-bottom:1px solid var(--line);}
+  .edu-num{font-family:'Fraunces',serif;font-size:2.2rem;color:var(--line);}
+  .edu-item h3{font-size:1.4rem;margin-bottom:6px;}
+  .edu-school{color:var(--steel);margin-bottom:14px;}
+  .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .badge{border:1px solid var(--line);color:var(--cyan);font-size:0.82rem;padding:6px 14px;border-radius:16px;}
+  .edu-item:nth-of-type(2) .badge{color:var(--violet);}
+  .edu-item:nth-of-type(3) .badge{color:var(--coral);}
+  .edu-item ul{list-style:none;color:var(--muted);font-size:0.92rem;line-height:1.9;}
+  .edu-item ul li::before{content:'✓ ';color:var(--cyan);}
+  @media(max-width:600px){.edu-item{grid-template-columns:1fr;}}
 
-/* Doctor / About */
-.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:30px;align-items:center;}
-.about-photo{width:100%;aspect-ratio:1;border-radius:20px;background:linear-gradient(160deg,var(--leaf),var(--ink-green));display:flex;align-items:center;justify-content:center;color:var(--cream);font-family:'Fraunces',serif;font-size:3rem;font-weight:700;}
-.about-text p{font-size:0.95rem;color:#4a453f;margin-bottom:14px;}
-.about-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
-.about-badge{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:0.8rem;font-weight:600;color:var(--ink-green);}
-@media(max-width:800px){.about-grid{grid-template-columns:1fr;}.about-photo{max-width:200px;margin:0 auto;}}
+  /* PROJECTS */
+  .project-card{
+    border:1px solid var(--line);border-radius:10px;padding:36px;margin-bottom:28px;
+    background:var(--bg-alt);
+  }
+  .project-card .pname{font-family:'Fraunces',serif;font-size:1.5rem;margin-bottom:14px;}
+  .project-card .pdesc{color:var(--muted);line-height:1.7;font-size:0.98rem;margin-bottom:18px;}
+  .project-card .ptags{display:flex;gap:10px;flex-wrap:wrap;}
+  .project-card .ptags span{font-size:0.78rem;color:var(--gold);border:1px solid var(--line);padding:5px 12px;border-radius:2px;}
+  .project-card .ptags span:nth-child(2){color:var(--cyan);}
+  .project-card .ptags span:nth-child(3){color:var(--violet);}
 
-/* Contact section */
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.contact-card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:24px 20px;text-align:center;}
-.contact-icon{width:48px;height:48px;border-radius:50%;background:rgba(122,155,106,0.18);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;}
-.contact-card h4{font-size:0.95rem;margin-bottom:6px;color:var(--ink-green);}
-.contact-card p{font-size:0.85rem;color:#6b6459;}
-.contact-card a.mono{color:var(--amber-dark);font-weight:700;font-size:0.9rem;}
-@media(max-width:800px){.contact-grid{grid-template-columns:1fr;}}
+  /* CONTACT */
+  #contact{border-top:1px solid var(--line);}
+  #contact h2{font-size:clamp(2.1rem,4.6vw,3.4rem);max-width:700px;line-height:1.15;}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:50px 0;}
+  .contact-cell{background:var(--bg-alt);padding:30px;}
+  .contact-cell .clabel{color:var(--steel);font-size:0.82rem;letter-spacing:0.05em;margin-bottom:10px;}
+  .contact-cell .cval{font-size:1.02rem;}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-links{display:flex;gap:16px;flex-wrap:wrap;}
+  .contact-links a{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:13px 22px;border-radius:2px;font-size:0.95rem;transition:all .25s;}
+  .contact-links a:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px);}
 
-footer{background:#17281c;color:rgba(251,248,241,0.75);padding:50px 0 24px;}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:32px;margin-bottom:36px;}
-.foot-grid h4{color:var(--cream);font-family:'Fraunces',serif;font-size:1rem;margin-bottom:14px;}
-.foot-grid p,.foot-grid li{font-size:0.84rem;line-height:1.9;}
-.foot-grid ul{list-style:none;}
-.foot-grid a:hover{color:var(--amber);}
-.foot-bottom{border-top:1px solid rgba(251,248,241,0.12);padding-top:20px;display:flex;justify-content:space-between;font-size:0.78rem;color:rgba(251,248,241,0.5);flex-wrap:wrap;gap:10px;}
-@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr;}}
-
-.wa-float{position:fixed;bottom:24px;right:24px;background:var(--whatsapp);color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 10px 30px rgba(37,211,102,0.45);z-index:150;transition:transform .2s;}
-.wa-float:hover{transform:scale(1.08);}
-
-a:focus-visible,button:focus-visible{outline:2px solid var(--amber-dark);outline-offset:3px;}
+  footer{padding:34px 6%;color:var(--muted);font-size:0.85rem;display:flex;justify-content:space-between;border-top:1px solid var(--line);}
+  @media(max-width:600px){footer{flex-direction:column;gap:8px;}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-mark"></div>
-      <div>
-        <div class="logo-text">The<span>Homeo</span>Vibe</div>
-        <div class="logo-sub">Homeopathy Pharmacy</div>
-      </div>
-    </div>
-    <nav>
-      <a href="#library">बीमारियाँ व इलाज</a>
-      <a href="#about">डॉक्टर के बारे में</a>
-      <a href="#why">क्यों चुनें</a>
-      <a href="#contact">संपर्क करें</a>
-    </nav>
-    <a class="wa-header-btn" href="https://wa.me/918764306828?text=Namaste%2C%20mujhe%20apni%20samasya%20ke%20baare%20mein%20consultation%20chahiye" target="_blank" rel="noopener">
-      💬 WhatsApp
-    </a>
-  </div>
-</header>
+<nav>
+  <div class="mark">abhishek<span>.</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<section class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <div class="eyebrow">Natural • Safe • Effective</div>
-      <h1>होम्योपैथी से पाएं<br><em>जड़ से राहत</em>, बिना साइड इफेक्ट</h1>
-      <p>TheHomeoVibe पर हर बीमारी की सही जानकारी और प्राकृतिक होम्योपैथिक इलाज — Dr. Vijay Reswal (BHMS) की विशेषज्ञ सलाह के साथ।</p>
-      <div class="hero-ctas">
-        <a class="btn-whatsapp" href="https://wa.me/918764306828?text=Namaste%2C%20mujhe%20consultation%20chahiye" target="_blank" rel="noopener">💬 अभी WhatsApp करें</a>
-        <button class="btn-primary" onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">बीमारियाँ देखें</button>
-      </div>
-    </div>
-    <div class="doc-card">
-      <div class="doc-avatar">VR</div>
-      <div>
-        <div class="doc-name">Dr. Vijay Reswal (BHMS)</div>
-        <div class="doc-meta">📍 Near No. 2 School, Todabhim (Rajasthan)</div>
-        <div class="doc-meta">🕐 परामर्श समय: 10:00 AM – 5:00 PM</div>
-        <div class="doc-actions">
-          <a class="mini-link" href="https://wa.me/918764306828" target="_blank" rel="noopener">📞 8764306828</a>
-          <a class="mini-link" href="https://instagram.com/TheHomeoVibe" target="_blank" rel="noopener">📷 @TheHomeoVibe</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="trust-strip">
-  <div class="wrap trust-inner">
-    <div>100% प्राकृतिक व सुरक्षित</div>
-    <div>कोई साइड इफेक्ट नहीं</div>
-    <div>जड़ से इलाज</div>
-    <div>गोपनीय व भरोसेमंद परामर्श</div>
-  </div>
-</div>
-
-<section class="block" id="library">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <h2>बीमारियाँ व होम्योपैथिक इलाज</h2>
-        <p>लक्षण, कारण और होम्योपैथी से सुरक्षित समाधान — किसी भी बीमारी पर क्लिक करें।</p>
-      </div>
-    </div>
-    <div class="cond-grid" id="condGrid"></div>
-  </div>
-</section>
-
-<section class="block" id="about" style="padding-top:0;">
-  <div class="wrap">
-    <div class="section-head"><div><h2>डॉक्टर के बारे में</h2></div></div>
-    <div class="about-grid">
-      <div class="about-photo">VR</div>
-      <div class="about-text">
-        <p><strong>Dr. Vijay Reswal (BHMS)</strong> — TheHomeoVibe Homeopathy Pharmacy के संस्थापक व मुख्य चिकित्सक, जो Todabhim (Rajasthan) में मरीज़ों को प्राकृतिक, सुरक्षित व असरदार होम्योपैथिक इलाज देते हैं।</p>
-        <p>यहां दर्द, ज्वर, त्वचा, पाचन, महिला व पुरुष स्वास्थ्य समस्याओं से लेकर लिवर व एलर्जी तक — हर तरह की बीमारी का जड़ से इलाज किया जाता है, बिना किसी साइड इफेक्ट के।</p>
-        <div class="about-badges">
-          <span class="about-badge">✔ 100% प्राकृतिक</span>
-          <span class="about-badge">✔ No Side Effects</span>
-          <span class="about-badge">✔ गोपनीय परामर्श</span>
-          <span class="about-badge">✔ जड़ से इलाज</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block why" id="why">
-  <div class="wrap">
-    <div class="section-head"><div><h2>TheHomeoVibe क्यों चुनें</h2><p>हर मरीज़ के लिए सुरक्षित व असरदार इलाज की गारंटी।</p></div></div>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-num mono">०१</div><h3>100% प्राकृतिक</h3><p>बिना किसी रासायनिक साइड इफेक्ट के सुरक्षित इलाज।</p></div>
-      <div class="why-card"><div class="why-num mono">०२</div><h3>जड़ से इलाज</h3><p>सिर्फ लक्षण नहीं, बीमारी के मूल कारण पर काम।</p></div>
-      <div class="why-card"><div class="why-num mono">०३</div><h3>गोपनीय परामर्श</h3><p>व्यक्तिगत समस्याओं पर भरोसेमंद व निजी सलाह।</p></div>
-      <div class="why-card"><div class="why-num mono">०४</div><h3>दीर्घकालिक राहत</h3><p>स्थायी परिणाम, बार-बार दवा पर निर्भरता नहीं।</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="block" id="contact">
-  <div class="wrap">
-    <div class="section-head"><div><h2>संपर्क करें</h2><p>अपॉइंटमेंट या ऑनलाइन परामर्श के लिए नीचे दिए गए किसी भी माध्यम से संपर्क करें।</p></div></div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">📍</div>
-        <h4>क्लिनिक का पता</h4>
-        <p>Homeopathy Pharmacy<br>Near No. 2 School, Todabhim (Rajasthan)</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📞</div>
-        <h4>कॉल / WhatsApp</h4>
-        <a class="mono" href="https://wa.me/918764306828" target="_blank" rel="noopener">8764306828</a>
-        <p style="margin-top:6px;">परामर्श समय: 10:00 AM – 5:00 PM</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">📷</div>
-        <h4>Instagram पर Follow करें</h4>
-        <a class="mono" href="https://instagram.com/TheHomeoVibe" target="_blank" rel="noopener">@TheHomeoVibe</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="logo" style="margin-bottom:14px;">
-          <div class="logo-mark"></div>
-          <div><div class="logo-text" style="color:var(--cream);">The<span>Homeo</span>Vibe</div></div>
-        </div>
-        <p>प्रकृति की शक्ति, होम्योपैथी की भक्ति — Natural, Safe, Effective.</p>
-      </div>
-      <div><h4>बीमारियाँ</h4><ul><li><a href="#library">स्वास्थ्य जानकारी</a></li><li><a href="#about">डॉक्टर</a></li></ul></div>
-      <div><h4>कंपनी</h4><ul><li><a href="#why">क्यों चुनें</a></li><li><a href="#contact">संपर्क</a></li></ul></div>
-      <div><h4>संपर्क करें</h4><p>📞 8764306828<br>📍 Todabhim (Rajasthan)<br>📷 @TheHomeoVibe</p></div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 TheHomeoVibe Homeopathy Pharmacy.</span>
-      <span>यह एक डेमो वेबसाइट है।</span>
-    </div>
-  </div>
-</footer>
-
-<a class="wa-float" href="https://wa.me/918764306828?text=Namaste%2C%20mujhe%20consultation%20chahiye" target="_blank" rel="noopener" aria-label="WhatsApp पर संपर्क करें">💬</a>
-
-<div class="overlay" id="condOverlay"><div class="detail-sheet" id="condSheet"></div></div>
-
-<script>
-const WA_NUMBER = "918764306828";
-function waLink(text){ return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`; }
-
-const conditions = [
-  {
-    id:"diabetes-bp", icon:"🩸", tag:"डायबिटीज व बी.पी.", name:"डायबिटीज और बी.पी.",
-    hindi:"ब्लड शुगर व ब्लड प्रेशर की समस्या",
-    intro:"डायबिटीज (मधुमेह) में ब्लड शुगर लेवल असंतुलित हो जाता है, वहीं बी.पी. (उच्च या निम्न) में ब्लड प्रेशर स्तर बिगड़ जाता है। होम्योपैथी दोनों को जड़ से नियंत्रित करने में सुरक्षित रूप से मदद करती है, बिना साइड इफेक्ट के।",
-    symptoms:["बार-बार प्यास व पेशाब आना","थकान व कमजोरी","पैरों में जलन, झुनझुनाहट","सिरदर्द, चक्कर आना (बी.पी.)","धड़कन तेज होना, धुंधला दिखना"],
-    causes:["अनियमित खानपान","तनाव व चिंता","शारीरिक गतिविधि की कमी","मोटापा","पारिवारिक इतिहास"],
-    remedies:[["Syzygium","ब्लड शुगर नियंत्रण"],["Uranium Nit","अधिक पेशाब व प्यास"],["Rauwolfia","हाई बी.पी. नियंत्रण"],["Crataegus","हृदय व बी.पी. संतुलन"]]
-  },
-  {
-    id:"ringworm", icon:"🧴", tag:"त्वचा रोग", name:"दाद (Ringworm)",
-    hindi:"त्वचा, स्कैल्प व नाखूनों में फंगल संक्रमण",
-    intro:"दाद (Ringworm) एक फंगल संक्रमण है जो त्वचा, स्कैल्प, नाखून व शरीर के किसी भी हिस्से पर हो सकता है। यह संक्रामक है पर पूरी तरह ठीक हो सकता है। होम्योपैथी जड़ से इलाज कर immunity भी बढ़ाती है।",
-    symptoms:["लाल, गोल आकार के दाने","खुजली, जलन या जलन","पपड़ीदार त्वचा","किनारों पर फैलना","बालों का झड़ना (स्कैल्प में)"],
-    causes:["फंगल संक्रमण","व्यक्तिगत सामान साझा करना","गीली जगहों पर नंगे पैर चलना","कमजोर प्रतिरक्षा प्रणाली"],
-    remedies:[["Sulphur","खुजली, जलन व लालिमा"],["Psorinum","दुर्गंध व पुराने मामलों में"],["Natrum Mur","सूखी, पपड़ीदार त्वचा"],["Petroleum","सूखी, खुजलीदार त्वचा"]]
-  },
-  {
-    id:"joint-sciatica", icon:"🦴", tag:"दर्द व सूजन", name:"जोड़ों का दर्द, सायटिका व गठिया",
-    hindi:"जोड़ों में दर्द, सूजन व जकड़न",
-    intro:"जोड़ों का दर्द, सायटिका (कमर से पैर तक जाने वाला दर्द) व गठिया आम समस्याएं हैं जो उम्र, चोट या गलत मुद्रा से होती हैं। होम्योपैथी दर्द व सूजन में राहत देकर लंबे समय तक असर दिखाती है।",
-    symptoms:["जोड़ों में दर्द, सूजन व जकड़न","कमर से पैर तक दर्द (सायटिका)","उठने-बैठने में परेशानी","मौसम बदलने पर दर्द बढ़ना"],
-    causes:["उम्र बढ़ना","वात बढ़ना","गलत बैठने या चलने की आदत","मोटापा व शारीरिक गतिविधि की कमी"],
-    remedies:[["Rhus Tox","अकड़न, चलने से आराम"],["Kali Carb","कमर से पैर तक दर्द"],["Arnica","चोट व मोच से"],["Ruta Grav","मांसपेशी व टेंडन दर्द"]]
-  },
-  {
-    id:"women-health", icon:"👩", tag:"महिला स्वास्थ्य", name:"महिला समस्याएं (PID, PCOS, VIT, Fibroid, Endometriosis)",
-    hindi:"हार्मोनल व प्रजनन स्वास्थ्य समस्याएं",
-    intro:"PID, PCOS, सफेद पानी (VIT), गर्भाशय की गांठ (Fibroid) व Endometriosis जैसी समस्याएं महिलाओं में आम हैं। होम्योपैथी हार्मोनल असंतुलन ठीक कर, बिना साइड इफेक्ट के प्रजनन स्वास्थ्य सुधारती है।",
-    symptoms:["अनियमित पीरियड्स","पेट के निचले हिस्से में दर्द","सफेद पानी/दुर्गंधयुक्त स्राव","संभोग के समय दर्द","बार-बार यूरिन आना, थकान"],
-    causes:["हार्मोनल असंतुलन","संक्रमण","तनाव","गलत खानपान व जीवनशैली"],
-    remedies:[["Sepia","हार्मोनल असंतुलन व थकान"],["Pulsatilla","अनियमित पीरियड्स"],["Calc Carb","PCOS व वजन बढ़ना"],["Thuja","गांठ व सिस्ट"]]
-  },
-  {
-    id:"warts", icon:"🖐️", tag:"त्वचा रोग", name:"मस्सा (Warts)",
-    hindi:"त्वचा पर उभरे हुए दाने (HPV संक्रमण)",
-    intro:"मस्सा (Warts) त्वचा पर होने वाली एक आम समस्या है जो HPV वायरस के कारण होती है। यह हाथ, पैर, चेहरे या शरीर के किसी भी हिस्से पर हो सकता है। होम्योपैथी जड़ से इलाज कर दोबारा होने से भी रोकती है।",
-    symptoms:["त्वचा पर छोटा, खुरदरा उभार","स्पर्श करने पर कठोर महसूस होना","धीरे-धीरे आकार बढ़ना","दबाने पर तकलीफ (खासकर पादतल मस्से में)"],
-    causes:["HPV वायरस का संक्रमण","त्वचा पर चोट या कट","संक्रमित व्यक्ति के संपर्क में आना","कमजोर प्रतिरक्षा प्रणाली"],
-    remedies:[["Thuja","सामान्य मस्से, सबसे असरदार"],["Antim Crud","कठोर, मोटे मस्से"],["Causticum","चेहरे व पलकों के मस्से"],["Nitric Acid","खून बहने वाले मस्से"]]
-  },
-  {
-    id:"men-health", icon:"👨", tag:"पुरुष स्वास्थ्य", name:"पुरुषों की गुप्त समस्याएं",
-    hindi:"नपुंसकता, स्वप्नदोष व शीघ्रपतन",
-    intro:"नपुंसकता (Impotency), स्वप्नदोष (Nightfall) व शीघ्रपतन (Rapid Ejaculation) पुरुषों में शर्म के कारण अक्सर छुपाई जाने वाली समस्याएं हैं। होम्योपैथी गोपनीय व सुरक्षित तरीके से जड़ से इलाज करती है।",
-    symptoms:["लिंग में तनाव न आना या जल्दी ढीला पड़ना","नींद में वीर्य का निकलना","संभोग के 1-2 मिनट में वीर्यपतन","सेक्स इच्छा में कमी, आत्मविश्वास की कमी"],
-    causes:["अधिक हस्तमैथुन","तनाव, चिंता व डिप्रेशन","कमजोर पाचन व अनियमित दिनचर्या","नशे का सेवन"],
-    remedies:[["Damiana","यौन शक्ति व स्टेमिना"],["Lycopodium","आत्मविश्वास व नपुंसकता"],["Selenium","स्वप्नदोष व कमजोरी"],["Agnus Castus","यौन इच्छा में कमी"]]
-  },
-  {
-    id:"allergy", icon:"🤧", tag:"एलर्जी", name:"एलर्जी (धूल, गेहूं, त्वचा)",
-    hindi:"इम्यून सिस्टम की अतिसंवेदनशील प्रतिक्रिया",
-    intro:"एलर्जी तब होती है जब शरीर का इम्यून सिस्टम किसी सामान्य पदार्थ को हानिकारक समझकर प्रतिक्रिया करता है — जैसे धूल-मिट्टी, गेहूं (ग्लूटेन) या त्वचा से जुड़ी एलर्जी। होम्योपैथी शरीर की प्रतिरोधक क्षमता बढ़ाकर स्थायी राहत देती है।",
-    symptoms:["छींकें आना, नाक बहना","आँखों में जलन व खुजली","त्वचा पर लाल चकत्ते व खुजली","पेट दर्द, गैस, सूजन (गेहूं एलर्जी में)","सांस लेने में तकलीफ"],
-    causes:["धूल, धुआं, पराग कण","गेहूं/ग्लूटेन प्रोटीन","केमिकल्स, साबुन, डिटर्जेंट","कमजोर प्रतिरक्षा प्रणाली"],
-    remedies:[["Allium Cepa","नाक बहना, छींकें"],["Natrum Mur","त्वचा एलर्जी"],["Arsenicum Alb","धूल एलर्जी, सांस तकलीफ"],["Nux Vomica","पाचन से जुड़ी एलर्जी"]]
-  },
-  {
-    id:"liver-spleen", icon:"🫀", tag:"लिवर व प्लीहा", name:"लिवर व प्लीहा वृद्धि",
-    hindi:"यकृत व तिल्ली का आकार बढ़ना",
-    intro:"जब लिवर या प्लीहा का आकार सामान्य से बड़ा हो जाता है, तो इसे क्रमशः Hepatomegaly व Splenomegaly कहते हैं। यह फैटी लिवर, हेपेटाइटिस, संक्रमण या अन्य कारणों से हो सकता है। होम्योपैथिक उपचार सुरक्षित व प्रभावी सहायता देता है।",
-    symptoms:["पेट के दाहिने हिस्से में भारीपन या दर्द","भूख कम लगना, पेट फूलना","पीलिया (आँखों व त्वचा का पीला होना)","थकान, कमजोरी, वजन कम होना","बार-बार बुखार या संक्रमण"],
-    causes:["फैटी लिवर","वायरल हेपेटाइटिस","शराब का सेवन","मलेरिया, डेंगू, टायफाइड","दवाइयों का असर"],
-    remedies:[["Chelidonium","लिवर की सूजन व दर्द"],["Lycopodium","पाचन व लिवर कमजोरी"],["Ceanothus","प्लीहा वृद्धि"],["Cardus Mar","लिवर डिटॉक्स व सुरक्षा"]]
-  },
-  {
-    id:"headache-migraine", icon:"🤕", tag:"सिरदर्द व नींद", name:"सिरदर्द, माइग्रेन व अनिद्रा",
-    hindi:"बार-बार सिरदर्द व नींद न आने की समस्या",
-    intro:"सिरदर्द, माइग्रेन व अनिद्रा तनाव, अनियमित दिनचर्या व अधिक स्क्रीन टाइम से जुड़ी आम समस्याएं हैं। होम्योपैथी समस्या की जड़ तक पहुंचकर मन को शांत करती है व गहरी नींद लाने में मदद करती है।",
-    symptoms:["सिर के एक या दोनों तरफ दर्द","तेज रोशनी/आवाज़ से परेशानी, मितली","नींद न आना, बार-बार जागना","दिन में नींद आना, थकान, चिड़चिड़ापन"],
-    causes:["अधिक तनाव व सोच-विचार","अनियमित नींद","मोबाइल/स्क्रीन का अधिक उपयोग","गलत खान-पान, व्यायाम की कमी"],
-    remedies:[["Belladonna","धड़कता तेज सिरदर्द"],["Nux Vomica","तनाव व अनिद्रा"],["Coffea Cruda","विचारों की अधिकता से नींद न आना"],["Gelsemium","सुस्ती के साथ सिरदर्द"]]
-  }
-];
-
-const condGrid = document.getElementById('condGrid');
-conditions.forEach(c=>{
-  const card=document.createElement('div');
-  card.className='cond-card';
-  card.innerHTML=`<div class="cond-banner">${c.icon}</div><div class="cond-body"><span class="cond-tag">${c.tag}</span><h3>${c.name}</h3><p>${c.hindi}</p></div>`;
-  card.addEventListener('click',()=>openCondition(c.id));
-  condGrid.appendChild(card);
-});
-
-function openCondition(id){
-  const c=conditions.find(x=>x.id===id);
-  const sheet=document.getElementById('condSheet');
-  sheet.innerHTML=`
-    <button class="detail-close" id="condClose">✕</button>
-    <div class="detail-head">
-      <div class="detail-eyebrow">${c.tag} • Safe & Gentle</div>
-      <h2>${c.name}</h2>
-      <div class="hindi">${c.hindi}</div>
-    </div>
-    <div class="detail-body">
-      <p class="detail-intro">${c.intro}</p>
-      <div class="detail-grid">
-        <div class="info-box"><h4>🩺 सामान्य लक्षण</h4><ul>${c.symptoms.map(s=>`<li>${s}</li>`).join('')}</ul></div>
-        <div class="info-box"><h4>⚙️ मुख्य कारण</h4><ul>${c.causes.map(s=>`<li>${s}</li>`).join('')}</ul></div>
-      </div>
-      <div class="remedy-strip">
-        <h4>💊 होम्योपैथिक उपचार</h4>
-        <div class="remedy-row">${c.remedies.map(r=>`<div class="remedy-chip"><span class="mono">${r[0]}</span><span class="desc">${r[1]}</span></div>`).join('')}</div>
-        <p class="detail-note">नोट: सही दवा व पोटेंसी व्यक्तिगत लक्षणों पर निर्भर करती है — कृपया योग्य होम्योपैथिक चिकित्सक से सलाह ज़रूर लें।</p>
-      </div>
-      <div class="doctor-alert">⚠️ लक्षण गंभीर हों, लंबे समय से बने हों, या असहनीय दर्द/परेशानी हो — तुरंत डॉक्टर से संपर्क करें।</div>
-      <div class="consult-cta">
-        <span>💬 इस समस्या पर Dr. Vijay Reswal से मुफ्त सलाह लें</span>
-        <a href="${waLink('Namaste Doctor, mujhe "'+c.name+'" ke baare mein salah chahiye.')}" target="_blank" rel="noopener"><button>WhatsApp करें</button></a>
-      </div>
-    </div>`;
-  document.getElementById('condOverlay').classList.add('show');
-  document.getElementById('condClose').addEventListener('click',()=>document.getElementById('condOverlay').classList.remove('show'));
-}
-document.getElementById('condOverlay').addEventListener('click',e=>{if(e.target.id==='condOverlay')e.target.classList.remove('show');});
-</script>
-</body>
-</html>
+<div class="fab-stack">
+  <a class="fab top" href="#hero" title="Back to top">↑</a>
+  <a class="fab whatsapp" href="https://wa.me/919610525830" target="_blank" title="WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.5 7.6 9.3 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3c1.5.8 3.2 1.3 5.1 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.6 3 13.3 3 12c0-4.9 4-8.9 9-8.9s9 4 9 8.9-4 9-9 9z"/></svg>
+  </a>
+  <a class="fab" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAWIA4QDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAQGAwUHAgEI/8QAVBAAAQQCAAMECAQCCAQDBQIPAQACAwQFEQYSIRMUMUEHIlFSU2FxkRUygZIj0QgWM0JWYpShNHKxwRckQ3N0grPhGDU2N7LwJWN1oiZVZXaEpPH/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/EACoRAQACAgEDBAEFAQEBAQAAAAABEQISIRMxUgNBodFRBCJhgfAUMiNC/9oADAMBAAIRAxEAPwD9MoiKoIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZORvuj7JZSAin8jfdH2Tkb7o+yWUgIp/I33R9k5G+6PsllICKfyN90fZEsp9REUUREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQE2irPpJ4hZwtwVlcs4t7SGF3ZNP96QjTQrEXwkzXLmnEf9ILGYfim5im4qaeGrY7u+y2bQ6HTnAa8Au2U7EdupDZgdzQzMbIx3taRsFfhDH8H3Mr6Ps5xY50jm0rLGu317Vjvzu+ocQF+nv6N/E5z/AKO69axJz3MY81ZCT1I8Wn6aIH6Lt6npxEXi5ennMzUtt6WvSRD6Pa2Plmx8l0W3uYAyTk5eXXy+a5r/APaaog6dgJh//kj+S+/0v/8A7s4e/wDay/8ARq3HolPAH/h7h/xocMd+7I9r3psJl3s/m5uqRjjGETMWTlO1RKZwr/SD4VzFuOtfjtYySRwa2SUB0Wz7XDw+y65etNq46xbA7RsUTpdA/mABPivx/wD0gZ+DrWcx0XA8VbvQDmWu5M5YnE/kDQOhdvfgv0pwzWu1PRHSr5Rr23YsRyTB/iHCI7B+aznhEREwuGUzMxKt+i/0x1+O+InYqHEy1HNiMvaOl5h08taXVZ5OyhfIRvlaXa+g2vxz/RsytDD8fyWMpcgpwGq5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
